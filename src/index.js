@@ -17,6 +17,7 @@ app.engine("hbs", engine({
 app.set('view engine', 'hbs'); //đặt cho express là view engine sdung handlebars ở engine handlebars
 app.set('views', path.join(__dirname, 'resources/views'));
 
+// req: ycau gửi lên, res: tùy chỉnh kết quả trả về
 app.get("/", (req, res) => {
     res.render('home');
 })
