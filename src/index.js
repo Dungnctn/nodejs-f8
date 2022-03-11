@@ -5,6 +5,8 @@ const { engine } = require("express-handlebars");
 const app = express();
 const PORT = 3001;
 
+const route = require('./routes')
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // HTTP logger
@@ -23,21 +25,12 @@ app.engine("hbs", engine({
 app.set('view engine', 'hbs'); //đặt cho express là view engine sdung handlebars ở engine handlebars
 app.set('views', path.join(__dirname, 'resources/views'));
 
+// Routes init
+route(app);
 // req: ycau gửi lên, res: tùy chỉnh kết quả trả về
-app.get("/", (req, res) => {
-    res.render('home');
-});
 
 
-app.get("/search", (req, res) => {
-    // console.log(req.query);
-    res.render('search');
-});
 
-app.post("/search", (req, res) => {
-    // console.log(req.body);
-    res.send('');
-});
 
 app.listen(PORT, () => console.log(`Server cua ban đang chạy cổng http:localhost:${PORT}`))
 
